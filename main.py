@@ -66,7 +66,7 @@ def rectangle(length, breadth, choice):
         return "area: " + str(area()) + " Perimeter: " + str(perimeter())
 
     
-def trapezieum(choice):
+def trapezium(choice):
     def volume():
         pass
 
