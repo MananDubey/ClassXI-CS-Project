@@ -65,6 +65,23 @@ def rectangle(length, breadth, choice):
     if choice == "both" or choice == "b":
         return "area: " + str(area()) + " Perimeter: " + str(perimeter())
 
+    
+def trapezieum(choice):
+    def volume():
+        pass
+
+    def surface_area():
+        pass
+
+    if choice == "volume" or choice == "v":
+        return volume()
+
+    if choice == "surface_area" or choice == "sa":
+        return surface_area()
+
+    if choice == "both" or choice == "b":
+        return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
+
 
 def quadrilateral(side1, side2, side3, side4, choice):
     def area():
@@ -184,22 +201,6 @@ def pyramid(choice):
     if choice == "both" or choice == "b":
         return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
 
-
-def trapezoid(choice):
-    def volume():
-        pass
-
-    def surface_area():
-        pass
-
-    if choice == "volume" or choice == "v":
-        return volume()
-
-    if choice == "surface_area" or choice == "sa":
-        return surface_area()
-
-    if choice == "both" or choice == "b":
-        return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
 
 
 def cone(choice):
