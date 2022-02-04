@@ -290,7 +290,7 @@ if __name__ == "__main__":
             parameters = []
             for entry in entries:
                 if entry.get is not None:
-                    parameters.append(entry.get())
+                    parameters.append(int(entry.get()))
                 else:
                     # TODO: make a error popup
                     return
