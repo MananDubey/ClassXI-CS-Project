@@ -1,3 +1,7 @@
+# TODO: add formulae
+# TODO: add more shapes and remove weird shapes
+# TODO: GUI popups
+
 def square(side, choice_2d):
     def area():
         return side * side
@@ -236,34 +240,37 @@ if __name__ == "__main__":
     def window_manager(event):
         for entry in entries:
             entry.destroy()
+        entries.clear()
         for label in labels:
             label.destroy()
+        labels.clear()
         for checkbox in checkboxes:
             checkbox.destroy()
+        checkboxes.clear()
+        area_value.set(0)
+        perimeter_value.set(0)
+        volume_value.set(0)
+        surface_area_value.set(0)
         pos_y = 45
         params = "".join(i for i in str(inspect.signature(globals()[event.widget.get().lower()]))
                          if i.isalnum() or i == " " or i == "_").split()
         for i in params:
             if i == "choice_2d":
-                area_value = IntVar()
                 area_checkbox = Checkbutton(window, text="area", onvalue=1, offvalue=0, variable=area_value)
-                area_checkbox.place(x=200, y=45)
+                area_checkbox.place(x=250, y=45)
                 checkboxes.append(area_checkbox)
-                perimeter_value = IntVar()
                 perimeter_checkbox = Checkbutton(window, text="perimeter", variable=perimeter_value, onvalue=1,
                                                  offvalue=0)
-                perimeter_checkbox.place(x=200, y=80)
+                perimeter_checkbox.place(x=250, y=80)
                 checkboxes.append(perimeter_checkbox)
                 continue
             if i == "choice_3d":
-                volume_value = IntVar()
                 volume_checkbox = Checkbutton(window, text="volume", variable=volume_value, onvalue=1, offvalue=0)
-                volume_checkbox.place(x=200, y=45)
+                volume_checkbox.place(x=250, y=45)
                 checkboxes.append(volume_checkbox)
-                surface_area_value = IntVar()
                 surface_area_checkbox = Checkbutton(window, text="surface area", variable=surface_area_value,
                                                     onvalue=1, offvalue=0)
-                surface_area_checkbox.place(x=200, y=80)
+                surface_area_checkbox.place(x=250, y=80)
                 checkboxes.append(surface_area_checkbox)
                 continue
             if i == "sides":
@@ -271,15 +278,46 @@ if __name__ == "__main__":
             entry = tkinter.Entry(window, relief="groove")
             label = Label(window, text="Enter {}:".format(i))
             label.place(x=10, y=pos_y, height=25)
-            entry.place(x=100, y=pos_y, width=55, height=25)
+            entry.place(x=100, y=pos_y, width=60, height=25)
             pos_y += 35
             entries.append(entry)
             labels.append(label)
 
 
     def calculate():
-        for entry in entries:
-            pass
+        if shape_combo is not None and (i.get for i in entries) is not None \
+                and (area_value.get() or perimeter_value.get() or surface_area_value.get() or volume_value.get()):
+            parameters = []
+            for entry in entries:
+                if entry.get is not None:
+                    parameters.append(entry.get())
+                else:
+                    # TODO: make a error popup
+                    return
+
+            if "".join(i for i in str(inspect.signature(globals()[shape_combo.get().lower()]))
+                       if i.isalnum() or i == " " or i == "_").split()[-1] == "choice_2d":
+                if area_value.get() and perimeter_value.get():
+                    parameters.append("b")
+                elif area_value.get():
+                    parameters.append("a")
+                elif perimeter_value.get():
+                    parameters.append("p")
+                else:
+                    parameters.append("b")
+
+            else:
+                if volume_value.get() and surface_area_value.get():
+                    parameters.append("b")
+                elif volume_value.get():
+                    parameters.append("v")
+                elif surface_area_value.get():
+                    parameters.append("sa")
+                else:
+                    parameters.append("b")
+
+            # TODO : add a results popup
+            globals()[shape_combo.get().lower()](*parameters)
 
 
     # Init
@@ -287,6 +325,10 @@ if __name__ == "__main__":
     window.title = "calc"
     window.geometry("400x300+50+50")
     window.resizable(False, True)
+    area_value = IntVar()
+    perimeter_value = IntVar()
+    volume_value = IntVar()
+    surface_area_value = IntVar()
 
     # ComboBox
     shape_combo = ttk.Combobox(window, values=shapes)
