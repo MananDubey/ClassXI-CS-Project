@@ -1,6 +1,5 @@
 # TODO: add formulae
 # TODO: add more shapes and remove weird shapes
-# TODO: GUI popups
 
 def square(side, choice_2d):
     def area():
@@ -285,15 +284,17 @@ if __name__ == "__main__":
 
 
     def calculate():
-        if shape_combo is not None and (i.get for i in entries) is not None \
-                and (area_value.get() or perimeter_value.get() or surface_area_value.get() or volume_value.get()):
+        if shape_combo is not None and (area_value.get() or perimeter_value.get() or surface_area_value.get() or
+                                        volume_value.get()):
             parameters = []
             for entry in entries:
-                if entry.get is not None:
+                try:
                     parameters.append(int(entry.get()))
-                else:
-                    # TODO: make a error popup
-                    return
+                except ValueError:
+                    empty_value_error_popup = Toplevel(window)
+                    empty_value_error_popup.geometry("200x100")
+                    empty_value_error_popup.title("Error")
+                    Label(empty_value_error_popup, text="All values have not been filled").pack()
 
             if "".join(i for i in str(inspect.signature(globals()[shape_combo.get().lower()]))
                        if i.isalnum() or i == " " or i == "_").split()[-1] == "choice_2d":
@@ -316,13 +317,20 @@ if __name__ == "__main__":
                 else:
                     parameters.append("b")
 
-            # TODO : add a results popup
-            globals()[shape_combo.get().lower()](*parameters)
+            result_popup = Toplevel(window)
+            result_popup.geometry("200x100")
+            result_popup.title("Result")
+            Label(result_popup, text=globals()[shape_combo.get().lower()](*parameters)).pack()
+        else:
+            option_error_popup = Toplevel(window)
+            option_error_popup.geometry("200x100")
+            option_error_popup.title("Error")
+            Label(option_error_popup, text="You need to select at least one option to calculate").pack()
 
 
     # Init
     window = Tk()
-    window.title = "calc"
+    window.title("calc")
     window.geometry("400x300+50+50")
     window.resizable(False, True)
     area_value = IntVar()
