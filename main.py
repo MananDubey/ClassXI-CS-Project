@@ -205,12 +205,12 @@ def pyramid(choice_3d):
         return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
 
 
-def cone(choice_3d):
+def cone(radius, height, choice_3d):
     def volume():
-        pass
+        return (3.14 * height * (radius ** 2))/3
 
     def surface_area():
-        pass
+        return
 
     if choice_3d == "volume" or choice_3d == "v":
         return volume()
@@ -291,9 +291,8 @@ if __name__ == "__main__":
                     parameters.append(int(entry.get()))
                 except ValueError:
                     empty_value_error_popup = Toplevel(window)
-                    empty_value_error_popup.geometry("200x100")
                     empty_value_error_popup.title("Error")
-                    Label(empty_value_error_popup, text="All values have not been filled").pack()
+                    Label(empty_value_error_popup, text="All values have not been filled").pack(padx=10, pady=10)
 
             if "".join(i for i in str(inspect.signature(globals()[shape_combo.get().lower()]))
                        if i.isalnum() or i == " " or i == "_").split()[-1] == "choice_2d":
@@ -317,14 +316,12 @@ if __name__ == "__main__":
                     parameters.append("b")
 
             result_popup = Toplevel(window)
-            result_popup.geometry("200x100")
             result_popup.title("Result")
-            Label(result_popup, text=globals()[shape_combo.get().lower()](*parameters)).pack()
+            Label(result_popup, text=globals()[shape_combo.get().lower()](*parameters)).pack(padx=10, pady=10)
         else:
             option_error_popup = Toplevel(window)
-            option_error_popup.geometry("200x100")
             option_error_popup.title("Error")
-            Label(option_error_popup, text="You need to select at least one option to calculate").pack()
+            Label(option_error_popup, text="You need to select at least one option to calculate").pack(padx=10, pady=10)
 
 
     # Init
