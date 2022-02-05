@@ -15,7 +15,7 @@ def square(side, choice_2d):
         return perimeter()
 
     if choice_2d == "both" or choice_2d == "b":
-        return "area: " + str(area()) + " Perimeter: " + str(perimeter())
+        return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
 
 
 def circle(radius, choice_2d):
@@ -32,7 +32,7 @@ def circle(radius, choice_2d):
         return perimeter()
 
     if choice_2d == "both" or choice_2d == "b":
-        return "area: " + str(area()) + " Perimeter: " + str(perimeter())
+        return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
 
 
 def triangle(side1, side2, side3, choice_2d):
@@ -49,7 +49,7 @@ def triangle(side1, side2, side3, choice_2d):
         return perimeter()
 
     if choice_2d == "both" or choice_2d == "b":
-        return "area: " + str(area()) + " Perimeter: " + str(perimeter())
+        return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
 
 
 def rectangle(length, breadth, choice_2d):
@@ -66,7 +66,7 @@ def rectangle(length, breadth, choice_2d):
         return perimeter()
 
     if choice_2d == "both" or choice_2d == "b":
-        return "area: " + str(area()) + " Perimeter: " + str(perimeter())
+        return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
 
 
 def trapezium(side1, side2, side3, side4, height, choice_2d):
@@ -83,7 +83,7 @@ def trapezium(side1, side2, side3, side4, height, choice_2d):
         return perimeter()
 
     if choice_2d == "both" or choice_2d == "b":
-        return "area: " + str(area()) + " Perimeter: " + str(perimeter())
+        return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
 
 
 def quadrilateral(side1, side2, side3, side4, choice_2d):
@@ -100,24 +100,7 @@ def quadrilateral(side1, side2, side3, side4, choice_2d):
         return perimeter()
 
     if choice_2d == "both" or choice_2d == "b":
-        return "area: " + str(area()) + " Perimeter: " + str(perimeter())
-
-
-def n_sided(*sides, choice_2d):
-    def area():
-        pass
-
-    def perimeter():
-        pass
-
-    if choice_2d == "area" or choice_2d == "a":
-        return area()
-
-    if choice_2d == "perimeter" or choice_2d == "p":
-        return perimeter()
-
-    if choice_2d == "both" or choice_2d == "b":
-        return "area: " + str(area()) + " Perimeter: " + str(perimeter())
+        return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
 
 
 def cube(side, choice_3d):
@@ -134,7 +117,7 @@ def cube(side, choice_3d):
         return surface_area()
 
     if choice_3d == "both" or choice_3d == "b":
-        return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
+        return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
 
 
 def cuboid(length, breadth, height, choice_3d):
@@ -151,7 +134,7 @@ def cuboid(length, breadth, height, choice_3d):
         return surface_area()
 
     if choice_3d == "both" or choice_3d == "b":
-        return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
+        return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
 
 
 def sphere(radius, choice_3d):
@@ -168,7 +151,7 @@ def sphere(radius, choice_3d):
         return surface_area()
 
     if choice_3d == "both" or choice_3d == "b":
-        return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
+        return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
 
 
 def hemisphere(radius, choice_3d):
@@ -185,7 +168,7 @@ def hemisphere(radius, choice_3d):
         return surface_area()
 
     if choice_3d == "both" or choice_3d == "b":
-        return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
+        return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
 
 
 def pyramid(choice_3d):
@@ -202,7 +185,7 @@ def pyramid(choice_3d):
         return surface_area()
 
     if choice_3d == "both" or choice_3d == "b":
-        return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
+        return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
 
 
 def cone(radius, height, choice_3d):
@@ -219,7 +202,7 @@ def cone(radius, height, choice_3d):
         return surface_area()
 
     if choice_3d == "both" or choice_3d == "b":
-        return "area: " + str(volume()) + " Perimeter: " + str(surface_area())
+        return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
 
 
 if __name__ == "__main__":
@@ -271,8 +254,7 @@ if __name__ == "__main__":
                 surface_area_checkbox.place(x=250, y=80)
                 checkboxes.append(surface_area_checkbox)
                 continue
-            if i == "sides":
-                continue
+
             entry = tkinter.Entry(window, relief="groove")
             label = Label(window, text="Enter {}:".format(i))
             label.place(x=10, y=pos_y, height=25)
@@ -292,7 +274,7 @@ if __name__ == "__main__":
                 except ValueError:
                     empty_value_error_popup = Toplevel(window)
                     empty_value_error_popup.title("Error")
-                    Label(empty_value_error_popup, text="All values have not been filled").pack(padx=10, pady=10)
+                    Label(empty_value_error_popup, text="All values have not been filled").pack(padx=20, pady=20)
 
             if "".join(i for i in str(inspect.signature(globals()[shape_combo.get().lower()]))
                        if i.isalnum() or i == " " or i == "_").split()[-1] == "choice_2d":
@@ -317,16 +299,16 @@ if __name__ == "__main__":
 
             result_popup = Toplevel(window)
             result_popup.title("Result")
-            Label(result_popup, text=globals()[shape_combo.get().lower()](*parameters)).pack(padx=10, pady=10)
+            Label(result_popup, text=globals()[shape_combo.get().lower()](*parameters)).pack(padx=20, pady=20)
         else:
             option_error_popup = Toplevel(window)
             option_error_popup.title("Error")
-            Label(option_error_popup, text="You need to select at least one option to calculate").pack(padx=10, pady=10)
+            Label(option_error_popup, text="You need to select at least one option to calculate").pack(padx=20, pady=20)
 
 
     # Init
     window = Tk()
-    window.title("calc")
+    window.title("Calculator")
     window.geometry("400x300+50+50")
     window.resizable(False, True)
     area_value = IntVar()
