@@ -244,7 +244,7 @@ if __name__ == "__main__":
             entry = tkinter.Entry(window, relief="groove")
             label = Label(window, text="Enter {}:".format(i))
             label.place(x=10, y=pos_y, height=25)
-            entry.place(x=100, y=pos_y, width=60, height=25)
+            entry.place(x=150, y=pos_y, width=60, height=25)
             pos_y += 35
             entries.append(entry)
             labels.append(label)
