@@ -193,7 +193,9 @@ def cone(radius, height, choice_3d):
 
 if __name__ == "__main__":
     shapes = list(str(i).split()[1].capitalize() for i in globals().values() if type(i) == type(square))
+    import ctypes
 
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  # Hide python console window
     import inspect
     import tkinter
     from tkinter import *
