@@ -1,5 +1,6 @@
-# TODO: add formulae
-# TODO: add more shapes and remove weird shapes
+# TODO: add more shapes
+from math import sqrt
+
 
 def square(side, choice_2d):
     def area():
@@ -9,10 +10,10 @@ def square(side, choice_2d):
         return side * 4
 
     if choice_2d == "area" or choice_2d == "a":
-        return area()
+        return "Area: " + str(area())
 
     if choice_2d == "perimeter" or choice_2d == "p":
-        return perimeter()
+        return "Perimeter: " + str(perimeter())
 
     if choice_2d == "both" or choice_2d == "b":
         return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
@@ -26,10 +27,10 @@ def circle(radius, choice_2d):
         return 2 * 3.14 * radius
 
     if choice_2d == "area" or choice_2d == "a":
-        return area()
+        return "Area: " + str(area())
 
     if choice_2d == "perimeter" or choice_2d == "p":
-        return perimeter()
+        return "Perimeter: " + str(perimeter())
 
     if choice_2d == "both" or choice_2d == "b":
         return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
@@ -37,16 +38,17 @@ def circle(radius, choice_2d):
 
 def triangle(side1, side2, side3, choice_2d):
     def area():
-        return
+        semi_perimeter = (side1 + side2 + side3) / 2
+        return sqrt(semi_perimeter * (semi_perimeter - side1) * (semi_perimeter - side2) * (semi_perimeter - side3))
 
     def perimeter():
         return side1 + side2 + side3
 
     if choice_2d == "area" or choice_2d == "a":
-        return area()
+        return "Area: " + str(area())
 
     if choice_2d == "perimeter" or choice_2d == "p":
-        return perimeter()
+        return "Perimeter: " + str(perimeter())
 
     if choice_2d == "both" or choice_2d == "b":
         return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
@@ -60,10 +62,10 @@ def rectangle(length, breadth, choice_2d):
         return 2 * (length + breadth)
 
     if choice_2d == "area" or choice_2d == "a":
-        return area()
+        return "Area: " + str(area())
 
     if choice_2d == "perimeter" or choice_2d == "p":
-        return perimeter()
+        return "Perimeter: " + str(perimeter())
 
     if choice_2d == "both" or choice_2d == "b":
         return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
@@ -77,27 +79,10 @@ def trapezium(side1, side2, side3, side4, height, choice_2d):
         return side1 + side2 + side3 + side4
 
     if choice_2d == "area" or choice_2d == "a":
-        return area()
+        return "Area: " + str(area())
 
     if choice_2d == "perimeter" or choice_2d == "p":
-        return perimeter()
-
-    if choice_2d == "both" or choice_2d == "b":
-        return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
-
-
-def quadrilateral(side1, side2, side3, side4, choice_2d):
-    def area():
-        pass
-
-    def perimeter():
-        return side1 + side2 + side3 + side4
-
-    if choice_2d == "area" or choice_2d == "a":
-        return area()
-
-    if choice_2d == "perimeter" or choice_2d == "p":
-        return perimeter()
+        return "Perimeter: " + str(perimeter())
 
     if choice_2d == "both" or choice_2d == "b":
         return "Area: " + str(area()) + "\nPerimeter: " + str(perimeter())
@@ -111,10 +96,10 @@ def cube(side, choice_3d):
         return 6 * (side ** 2)
 
     if choice_3d == "volume" or choice_3d == "v":
-        return volume()
+        return "Volume: " + str(volume())
 
     if choice_3d == "surface_area" or choice_3d == "sa":
-        return surface_area()
+        return "Surface Area: " + str(surface_area())
 
     if choice_3d == "both" or choice_3d == "b":
         return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
@@ -128,10 +113,10 @@ def cuboid(length, breadth, height, choice_3d):
         return 2 * (length * breadth + breadth * height + length * height)
 
     if choice_3d == "volume" or choice_3d == "v":
-        return volume()
+        return "Volume :" + str(volume())
 
     if choice_3d == "surface_area" or choice_3d == "sa":
-        return surface_area()
+        return "Surface Area: " + str(surface_area())
 
     if choice_3d == "both" or choice_3d == "b":
         return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
@@ -145,10 +130,10 @@ def sphere(radius, choice_3d):
         return 4 * 3.14 * radius ** 2
 
     if choice_3d == "volume" or choice_3d == "v":
-        return volume()
+        return "Volume :" + str(volume())
 
     if choice_3d == "surface_area" or choice_3d == "sa":
-        return surface_area()
+        return "Surface Area: " + str(surface_area())
 
     if choice_3d == "both" or choice_3d == "b":
         return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
@@ -162,10 +147,10 @@ def hemisphere(radius, choice_3d):
         return 3 * 3.14 * radius ** 2
 
     if choice_3d == "volume" or choice_3d == "v":
-        return volume()
+        return "Volume :" + str(volume())
 
     if choice_3d == "surface_area" or choice_3d == "sa":
-        return surface_area()
+        return "Surface Area: " + str(surface_area())
 
     if choice_3d == "both" or choice_3d == "b":
         return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
@@ -179,10 +164,10 @@ def pyramid(choice_3d):
         pass
 
     if choice_3d == "volume" or choice_3d == "v":
-        return volume()
+        return "Volume :" + str(volume())
 
     if choice_3d == "surface_area" or choice_3d == "sa":
-        return surface_area()
+        return "Surface Area: " + str(surface_area())
 
     if choice_3d == "both" or choice_3d == "b":
         return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
@@ -190,16 +175,16 @@ def pyramid(choice_3d):
 
 def cone(radius, height, choice_3d):
     def volume():
-        return (3.14 * height * (radius ** 2))/3
+        return (3.14 * height * (radius ** 2)) / 3
 
     def surface_area():
-        return
+        return 3.14 * radius * (radius + sqrt((height ** 2) + (radius ** 2)))
 
     if choice_3d == "volume" or choice_3d == "v":
-        return volume()
+        return "Volume :" + str(volume())
 
     if choice_3d == "surface_area" or choice_3d == "sa":
-        return surface_area()
+        return "Surface Area: " + str(surface_area())
 
     if choice_3d == "both" or choice_3d == "b":
         return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
