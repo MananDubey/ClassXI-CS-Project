@@ -156,12 +156,13 @@ def hemisphere(radius, choice_3d):
         return "Volume: " + str(volume()) + "\nSurface Area: " + str(surface_area())
 
 
-def pyramid(choice_3d):
+def pyramid(base_length, base_width, pyramid_height, choice_3d):
     def volume():
-        pass
+        return (base_length * base_width * pyramid_height) / 3
 
     def surface_area():
-        pass
+        return base_length * sqrt(((base_width / 2) ** 2) + pyramid_height ** 2 + base_width) + base_width * sqrt(
+            ((base_length / 2) ** 2) + pyramid_height ** 2)
 
     if choice_3d == "volume" or choice_3d == "v":
         return "Volume :" + str(volume())
