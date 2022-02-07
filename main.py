@@ -303,6 +303,11 @@ if __name__ == "__main__":
     perimeter_value = IntVar()
     volume_value = IntVar()
     surface_area_value = IntVar()
+    try:
+        photo = PhotoImage(file="icon.png")
+        window.iconphoto(False, photo)
+    except FileNotFoundError:
+        pass
 
     # ComboBox
     shape_combo = ttk.Combobox(window, values=shapes)
